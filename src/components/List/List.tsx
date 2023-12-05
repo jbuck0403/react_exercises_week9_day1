@@ -5,6 +5,10 @@ interface ListProps {
 }
 
 const List = (props: ListProps) => {
+  const title = (str: string) => {
+    return str[0].toUpperCase() + str.slice(1);
+  };
+
   const displayList = () => {
     const formatListItem = (item: string) => {
       return `${item}`;
@@ -12,7 +16,7 @@ const List = (props: ListProps) => {
     return props.listItems.map((item, idx) => {
       return (
         <li key={idx} className="list-item">
-          {formatListItem(item)}
+          {title(formatListItem(item))}
         </li>
       );
     });

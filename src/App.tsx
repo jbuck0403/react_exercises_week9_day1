@@ -7,9 +7,9 @@ import Title from "./components/Title/Title";
 
 function App() {
   const [listItems, setListItems] = useState<string[]>([]);
+  const listName = "To Do";
 
   const updateListItems = (newItem: string) => {
-    console.log("working");
     if (newItem.trim() !== "") {
       setListItems((currentList) => {
         return [...currentList, newItem];
@@ -19,9 +19,13 @@ function App() {
   return (
     <>
       {/* displays a different message if list is empty */}
-      <Title list={listItems} />
+      <Title list={listItems} title={listName} />
       {/* accepts inputs to add to list */}
-      <InputForm updateListItems={updateListItems} />
+      <InputForm
+        updateListItems={updateListItems}
+        listLength={listItems.length}
+        defaultPlaceholder={listName}
+      />
       {/* displays inputs added from field */}
       <List listItems={listItems} />
     </>

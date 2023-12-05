@@ -3,10 +3,13 @@ import "./InputForm.css";
 
 interface InputFormProps {
   updateListItems: (inputValue: string) => void;
+  listLength: number;
+  defaultPlaceholder: string;
 }
 
 const InputForm = (props: InputFormProps) => {
   const [inputValue, setInputValue] = useState<string>("");
+  const placeholder = "Enter something...";
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -20,7 +23,14 @@ const InputForm = (props: InputFormProps) => {
 
   return (
     <form className="input-form" onSubmit={handleSubmit}>
-      <input type="text" onChange={handleInputChange} value={inputValue} />
+      <input
+        type="text"
+        onChange={handleInputChange}
+        value={inputValue}
+        placeholder={
+          props.listLength == 0 ? props.defaultPlaceholder : placeholder
+        }
+      />
       <button type="submit">Submit</button>
     </form>
   );
