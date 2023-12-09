@@ -16,6 +16,14 @@ function App() {
       });
     }
   };
+
+  const deleteListItem = (idxToDelete: number) => {
+    setListItems(
+      listItems.filter((_, idx) => {
+        return idx !== idxToDelete;
+      })
+    );
+  };
   return (
     <>
       {/* displays a different message if list is empty */}
@@ -27,7 +35,7 @@ function App() {
         defaultPlaceholder={listName}
       />
       {/* displays inputs added from field */}
-      <List listItems={listItems} />
+      <List listItems={listItems} deleteListItem={deleteListItem} />
     </>
   );
 }

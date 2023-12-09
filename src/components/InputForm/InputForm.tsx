@@ -16,7 +16,6 @@ const InputForm = (props: InputFormProps) => {
     props.updateListItems(inputValue);
     setInputValue("");
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
